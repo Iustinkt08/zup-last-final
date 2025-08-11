@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background: radial-gradient(circle at center, #1b1b1b 0%, #0f0f0f 70%);
+  background-size: 200% 200%;
+  animation: bgMove 15s ease infinite alternate;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes bgMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+.hero {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.word {
+  color: #FFD500;
+}
+
+.cards {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+.flip-card {
+  width: 220px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(calc(var(--dir) * 180deg));
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  transition: box-shadow 0.4s;
+}
+
+.flip-card:hover .flip-front,
+.flip-card:hover .flip-back {
+  box-shadow: 0 0 20px #FFD500;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  padding: 1rem;
+}
+
+.card-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.card-back-text {
+  font-size: 0.9rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    font-size: 2rem;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .flip-card {
+    width: 180px;
+    height: 180px;
+  }
+}
